@@ -19,6 +19,7 @@ package com.mycompany.myproject;
 
 import org.vertx.java.core.Handler;
 import org.vertx.java.core.eventbus.Message;
+import org.vertx.java.core.json.JsonObject;
 import org.vertx.java.platform.Verticle;
 
 /*
@@ -34,6 +35,13 @@ public class PingVerticle extends Verticle {
       public void handle(Message<String> message) {
         message.reply("pong!");
         container.logger().info("Sent back pong");
+      }
+    });
+
+    vertx.eventBus().registerHandler("hello-mongo", new Handler<Message<JsonObject>>() {
+      @Override
+      public void handle(Message<JsonObject> event) {
+        container.logger().info("well, that's odd?!");
       }
     });
 
