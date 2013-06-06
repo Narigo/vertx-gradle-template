@@ -38,13 +38,6 @@ public class PingVerticle extends Verticle {
       }
     });
 
-    vertx.eventBus().registerHandler("hello-mongo", new Handler<Message<JsonObject>>() {
-      @Override
-      public void handle(Message<JsonObject> event) {
-        container.logger().info("well, that's odd?!");
-      }
-    });
-
     container.logger().info("PingVerticle started");
 
   }
